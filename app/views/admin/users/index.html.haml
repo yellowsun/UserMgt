@@ -1,0 +1,22 @@
+%h1 Listing Users
+
+%table
+  %tr
+    %th No.
+    %th First Name
+    %th Last Name
+    %th Actions
+
+  - @admin_users.each_with_index do |admin_user, i|
+    %tr
+      %td= i + 1
+      %td= admin_user.first_name
+      %td= admin_user.last_name
+      %td
+        = link_to('Edit', edit_admin_user_path(admin_user))
+        |
+        = link_to('Destroy', admin_user_path(admin_user.id), :method => :delete, :data => { :confirm => 'Are you sure?' })
+
+%br
+
+= link_to 'New User', new_admin_user_path
